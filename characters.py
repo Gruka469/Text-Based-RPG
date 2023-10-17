@@ -4,13 +4,35 @@
 # I am also storing the players initial information i.e. their names
 
 class Character:
-    def __init__(self, name, health, attack, attack_speed, defense, level):
+    def __init__(self, name, health, attack, attack_speed, defense, experience, level):
         self.name = name
         self.health = health
         self.attack = attack
         self.attack_speed = attack_speed
         self.defense = defense
+        self.experience = experience
         self.level = level
+        
+    def gain_experience(self, xp):
+         self.experience += xp
+
+    def calculate_exp_threshold(self):
+        #Defining a formula for XP threshold
+        return self.level * 100 # Example: 100 XP needed for level 2, 200 XP needed for level 3 and so on.
+    
+    def level_up(self):
+        self.level += 1
+        if self.level % 1 == 0:
+            self.attack += 1 # Increase attack every level
+
+        if self.level % 2 == 0:
+            self.health += 10
+            self.defense += 5
+
+        if self.level % 5 == 0:
+            self.attack += 10
+            self.attack_speed += 0.10
+
 
 class Player:
     def __init__(self, name, character):
@@ -19,9 +41,6 @@ class Player:
 
     def display_info(self):
         return f"{self.name}: {self.character.name} (Health: {self.character.health}, Attack: {self.character.attack}, AttackSpeed: {self.character.attack_speed} Defense: {self.character.defense})"
-    
-    def character_progress(self):
-        return f"{self.character.level}"
 
 # Create a dictionary to map character names to Character instances
 character_dict = {
@@ -38,6 +57,7 @@ character_dict = {
 
 players = []
 num_players = int(input("How many players are going to play the game? "))
+initial_level_of_character = 1
 
 for _ in range(num_players):
     player_name = input(f"Enter a Username {_ + 1}: ")
@@ -52,3 +72,4 @@ for _ in range(num_players):
 
 for player in players:
     print(player.display_info())
+    
