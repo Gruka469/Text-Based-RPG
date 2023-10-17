@@ -4,12 +4,13 @@
 # I am also storing the players initial information i.e. their names
 
 class Character:
-    def __init__(self, name, health, attack, attack_speed, defense):
+    def __init__(self, name, health, attack, attack_speed, defense, level):
         self.name = name
         self.health = health
         self.attack = attack
         self.attack_speed = attack_speed
         self.defense = defense
+        self.level = level
 
 class Player:
     def __init__(self, name, character):
@@ -17,8 +18,10 @@ class Player:
         self.character = character
 
     def display_info(self):
-        return f"{self.name}: {self.character.name} (Health: {self.character.health},\
-              Attack: {self.character.attack}, Defense: {self.character.defense})"
+        return f"{self.name}: {self.character.name} (Health: {self.character.health}, Attack: {self.character.attack}, AttackSpeed: {self.character.attack_speed} Defense: {self.character.defense})"
+    
+    def character_progress(self):
+        return f"{self.character.level}"
 
 # Create a dictionary to map character names to Character instances
 character_dict = {
@@ -33,35 +36,19 @@ character_dict = {
     'Shaman': Character('Shaman', 550, 15, 1.00, 75)
 }
 
-start = input("Do you wanna play the game? y/n? ")
-players = input("How many players are going to play the game? ")
-list_players = players.split()
-character = input("Each player must choose their character: ")
+players = []
+num_players = int(input("How many players are going to play the game? "))
 
+for _ in range(num_players):
+    player_name = input(f"Enter a Username {_ + 1}: ")
+    character_name = input(f"{player_name}: Choose your character ({', '.join(character_dict.keys())}): ")
 
+    while character_name not in character_dict:
+        print("Please choose a valid character.")
+        character_name = input(f"{player_name}: Choose your character ({', '.join(character_dict.keys())}): ")
 
+    player_character = character_dict[character_name]
+    players.append(Player(player_name, player_character))
 
-while players <= 9:
-    character = input(f"{players}: Choose your character (Warrior, Rogue, Mage, etc.): ")
-
-    if character == 'Warrior':
-        print(f"{players}: You've selected {character} as your character.")
-    elif character == 'Rogue':
-        print(f"{players}: You've selected {character} as your character.")
-    elif character == 'Mage':
-        print(f"{players}: You've selected {character} as your character.")
-    elif character == 'Druid':
-        print(f"{players}: You've selected {character} as your character.")
-    elif character == 'Preist':
-        print(f"{players}: You've selected {character} as your character.")
-    elif character == 'Paladin':
-        print(f"{players}: You've selected {character} as your character.")
-    elif character == 'Hunter':
-        print(f"{players}: You've selected {character} as your character.")
-    elif character == 'Warlock':
-        print(f"{players}: You've selected {character} as your character.")
-    elif character == 'Shaman':
-        print(f"{players}: You've selected {character} as your character.")
-    else:
-        print("Please choose a valid character: ")
-        continue
+for player in players:
+    print(player.display_info())
