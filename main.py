@@ -2,10 +2,15 @@ import pygame
 import time
 import random
 
-WIDTH, HEIGHT = 1000, 800
+WIDTH, HEIGHT = 1280, 720
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Sorcerers & Sentinels: A Wordbound Odyssey")
 
+BG = pygame.image.load("forest_theme.jpg")
+
+def draw():
+    WIN.blit(BG, (0, 0))
+    pygame.display.update()
 
 def main():
     run = True
@@ -15,6 +20,7 @@ def main():
             if event.type == pygame.QUIT:
                 run = False
                 break
+        draw()
 
     pygame.quit()
 
