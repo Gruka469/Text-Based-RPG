@@ -39,7 +39,7 @@ def explore_forest_alone_first():
               "As you gather firewood and set up your tent, you can't shake the feeling that you're being watched.")
         # Continue the story with more choices and outcomes based on setting up camp.
 
-def explore_forest_alone_second():
+def seek_help_from_tracker_guild():
     print("Realizing that the forest can be dangerous, you decide to seek the help of the Tracker Guild in town.\
                     They are known for their exceptional skills in locating lost items and navigating the woods.\
                     You offer them a portion of the reward in exchange for their assistance.")
@@ -54,21 +54,13 @@ def explore_forest_alone_second():
     choice = input("Enter your choice (1/2/3): ")
 
     if choice == "1":
-        print("You decide to take the left path, which leads you deeper into the forest. The darkness is overwhelming, "
-              "and strange sounds surround you. You press on, hoping to find the package.")
-        # Continue the story with more choices and outcomes based on the left path.
-
+        print("You attempt to cross the river, facing danger but saving time.")
     elif choice == "2":
-        print("You choose the right path, which leads to a clearing with a tranquil stream. You take a moment to rest "
-              "and drink from the stream before continuing your search.")
-        # Continue the story with more choices and outcomes based on the right path.
-
+        print("You ask Sarah for advice on navigating the river safely.")
     elif choice == "3":
-        print("You decide to set up camp for the night, hoping that resting will prepare you for the challenges ahead. "
-              "As you gather firewood and set up your tent, you can't shake the feeling that you're being watched.")
-        # Continue the story with more choices and outcomes based on setting up camp.
+        print("You decide to find an alternative route to avoid the river entirely.")
 
-def explore_forest_alone_third():
+def investigate_merchant_shop():
     print("Instead of heading straight to the forest, you decide to investigate the merchant's shop more thoroughly.\
                     You wonder if the package might not have even left the shop in the first place.\
                     You talk to the merchant, check the shop, and question any potential witnesses.")
@@ -83,19 +75,11 @@ def explore_forest_alone_third():
     choice = input("Enter your choice (1/2/3): ")
 
     if choice == "1":
-        print("You decide to take the left path, which leads you deeper into the forest. The darkness is overwhelming, "
-              "and strange sounds surround you. You press on, hoping to find the package.")
-        # Continue the story with more choices and outcomes based on the left path.
-
+        print("You confront the merchant with the evidence you've found.")
     elif choice == "2":
-        print("You choose the right path, which leads to a clearing with a tranquil stream. You take a moment to rest "
-              "and drink from the stream before continuing your search.")
-        # Continue the story with more choices and outcomes based on the right path.
-
+        print("You investigate the whereabouts of the rogue employee and attempt to retrieve the package.")
     elif choice == "3":
-        print("You decide to set up camp for the night, hoping that resting will prepare you for the challenges ahead. "
-              "As you gather firewood and set up your tent, you can't shake the feeling that you're being watched.")
-        # Continue the story with more choices and outcomes based on setting up camp.
+        print("You decide to ignore the note and proceed with your original plan to search the forest.")
 
 
 def first_quests():
@@ -112,9 +96,9 @@ def first_quests():
         if selected_choice == 1:
             explore_forest_alone_first()
         elif selected_choice == 2:
-            explore_forest_alone_second()
+            seek_help_from_tracker_guild()
         elif selected_choice == 3:
-            explore_forest_alone_third()
+            investigate_merchant_shop()
 
 if choose_zone == "Dungeon":
     pass
